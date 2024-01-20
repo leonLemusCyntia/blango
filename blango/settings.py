@@ -16,6 +16,9 @@ from configurations import Configuration
 from configurations import values
 import dj_database_url
 
+DJANGO_CONFIGURATION="Dev"
+DJANGO_SETTINGS_MODULE="blango.settings"
+
 class Dev(Configuration):
     # Build paths inside the project like this: BASE_DIR / 'subdir'.
     BASE_DIR = Path(__file__).resolve().parent.parent
@@ -133,6 +136,29 @@ class Dev(Configuration):
     SESSION_COOKIE_SAMESITE = 'None'
     CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
     CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+    LOGGING = {
+       "version": 1,
+       "disable_existing_loggers": False,
+       "formatters": {
+           "verbose": {
+               "format": "{levelname} {asctime} {module} {process:d} {thread:d} {message}",
+               "style": "{",
+           },
+       },
+       "handlers": {
+           "console": {
+               "class": "logging.StreamHandler",
+               "stream": "ext://sys.stdout",
+               "formatter": "verbose",
+           },
+       },
+       "root": {
+           "handlers": ["console"],
+           "level": "DEBUG",
+       },
+   }
+   
 
 class Prod(Dev):
   DEBUG = False
