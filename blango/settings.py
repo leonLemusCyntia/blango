@@ -64,6 +64,7 @@ class Dev(Configuration):
         'allauth.socialaccount.providers.google',
         'rest_framework',
         'rest_framework.authtoken',
+        'drf_yasg',
     ]
 
     REST_FRAMEWORK = {
@@ -87,6 +88,13 @@ class Dev(Configuration):
         'django.contrib.messages.middleware.MessageMiddleware',
         #'django.middleware.clickjacking.XFrameOptionsMiddleware',
     ]
+
+    SWAGGER_SETTINGS = {
+        "SECURITY_DEFINITIONS": {
+            "Token": {"type": "apiKey", "name": "Authorization", "in": "header"},
+            "Basic": {"type": "basic"},
+        }
+    }
 
     INTERNAL_IPS = ["192.168.10.226"]
 
@@ -192,6 +200,7 @@ class Dev(Configuration):
            "level": "DEBUG",
        },
    }
+
 
    
    
