@@ -30,15 +30,15 @@ class PostViewSet(viewsets.ModelViewSet):
         )
         return Response(post_serializer.data)
 
-# class PostList(generics.ListCreateAPIView):
-#     queryset = Post.objects.all()
-#     serializer_class = PostSerializer
+class PostList(generics.ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
 
 
-# class PostDetail(generics.RetrieveUpdateDestroyAPIView):
-#     permission_classes = [AuthorModifyOrReadOnly | IsAdminUserForObject]
-#     queryset = Post.objects.all()
-#     serializer_class = PostDetailSerializer
+class PostDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [AuthorModifyOrReadOnly | IsAdminUserForObject]
+    queryset = Post.objects.all()
+    serializer_class = PostDetailSerializer
 
     
 class UserDetail(generics.RetrieveAPIView):
